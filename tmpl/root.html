@@ -1,0 +1,15 @@
+<h1>Home</h1>
+
+<form action="/goto/" method="post">
+  <div>
+    <label>Go to (new?) page:</label>
+    <input type="text" name="title" value="TestPage">
+    <input type="submit" value="Go">
+  </div>
+</form>
+
+<ul>
+  {{range $_, $t := .}}
+  <li><a href="/view/{{$t}}">{{$t}}</a></li>
+  {{end}}
+</ul>
