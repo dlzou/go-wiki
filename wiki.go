@@ -1,8 +1,8 @@
 package main
 
 import (
-	"html/template"
-	"io/ioutil"
+    "html/template"
+    "io/ioutil"
     "log"
     "net/http"
     "regexp"
@@ -10,22 +10,22 @@ import (
 
 
 type Page struct {
-	Title string
-	Body []byte
+    Title string
+    Body []byte
 }
 
 func (p *Page) save() error {
-	filename := "data/" + p.Title + ".txt"
-	return ioutil.WriteFile(filename, p.Body, 0600)
+    filename := "data/" + p.Title + ".txt"
+    return ioutil.WriteFile(filename, p.Body, 0600)
 }
 
 func loadPage(title string) (*Page, error) {
-	filename := "data/" + title + ".txt"
-	body, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-	return &Page{Title: title, Body: body}, nil
+    filename := "data/" + title + ".txt"
+    body, err := ioutil.ReadFile(filename)
+    if err != nil {
+        return nil, err
+    }
+    return &Page{Title: title, Body: body}, nil
 }
 
 var templates = template.Must(template.New("").Funcs(template.FuncMap{
